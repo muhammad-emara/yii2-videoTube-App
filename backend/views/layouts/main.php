@@ -58,7 +58,8 @@
             . '</li>';*/
 		}
 		echo Nav::widget([
-			'options' => ['class' => 'navbar-nav navbar-right'],
+			'options' => ['class' => 'navbar-nav ml-auto'],
+			/*'options' => ['class' => 'navbar-nav navbar-right'],*/
 			'items' => $menuItems,
 		]);
 		NavBar::end();
