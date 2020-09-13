@@ -1,4 +1,5 @@
 
+<<<<<<< HEAD
 # yii2-videoTube-App
 Using PHP Yii2 framwork advanced template to build simple  video tube application
 
@@ -50,3 +51,5 @@ vendor/                  contains dependent 3rd-party packages
 environments/            contains environment-based overrides
 ```
 
+=======
+>>>>>>> 8ae724627b9912c1d73b33b4728654c6fdf1cfd9
