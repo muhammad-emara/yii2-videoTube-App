@@ -109,4 +109,19 @@ un comment urlManager compnent
 that is in the front end 
 do the same for the backend
 backend/config/main.php
-	
+
+--------------------------------------
+Controlller id is the same name but lower case sparated words by - 
+controller name: HelloWorldController -> id is hello-world
+-must extend COntroller
+-actionIndex
+------------------
+Upgrading bootsrap 3 to 4 using composer
+composer require yiisoft/yii2-bootstrap4
+
+and remove the old one
+----------------
+got to main lay out file and remove options of homeurl
+/* 'options' => [
+            'class' => 'navbar-inverse navbar-fixed-top',
+        ],*/
