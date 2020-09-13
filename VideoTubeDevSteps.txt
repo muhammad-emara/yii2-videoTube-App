@@ -1,0 +1,112 @@
+Yii2 videotube project
+-------------------------
+prerequestes:
+xampp installed
+Composer installed
+--------------------------
+build virtual hosts for front and backend
+in the apache http-vhosts.conf file
+add these hosts to hosts file inyour windows
+
+download yii
+composer create-project --prefer-dist yiisoft/yii2-app-advanced VideoTube
+
+
+------------------------
+our vhosts are:
+
+<VirtualHost *:80>
+        ServerName videotube.test
+        DocumentRoot "C:/xampp/htdocs/VideoTube/frontend/web/"
+        
+        <Directory "C:/xampp/htdocs/VideoTube/frontend/web/">
+            # use mod_rewrite for pretty URL support
+            RewriteEngine on
+            # If a directory or a file exists, use the request directly
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteCond %{REQUEST_FILENAME} !-d
+            # Otherwise forward the request to index.php
+            RewriteRule . index.php
+
+            # use index.php as index file
+            DirectoryIndex index.php
+
+            # ...other settings...
+            # Apache 2.4
+            Require all granted
+            
+            ## Apache 2.2
+            # Order allow,deny
+            # Allow from all
+        </Directory>
+    </VirtualHost>
+    
+     <VirtualHost *:80>
+        ServerName studio.videotube.test
+        DocumentRoot "C:/xampp/htdocs/VideoTube/backend/web/"
+        
+        <Directory "C:/xampp/htdocs/VideoTube/backend/web/">
+            # use mod_rewrite for pretty URL support
+            RewriteEngine on
+            # If a directory or a file exists, use the request directly
+            RewriteCond %{REQUEST_FILENAME} !-f
+            RewriteCond %{REQUEST_FILENAME} !-d
+            # Otherwise forward the request to index.php
+            RewriteRule . index.php
+
+            # use index.php as index file
+            DirectoryIndex index.php
+
+            # ...other settings...
+            # Apache 2.4
+            Require all granted
+            
+            ## Apache 2.2
+            # Order allow,deny
+            # Allow from all
+        </Directory>
+    </VirtualHost>
+	
+-------------------------------------------------------------------------
+open the folder then hit > php init
+
+test your hosts in browsers.
+
+----------------------------------------------
+Create database on your server now to enable you login
+
+-got to common folder in your application
+	common/config/main-local.php
+		chnage the dsn under components and add your db name
+------------------------------------------------------
+Migration
+From your terminal 
+type > php yii migrate
+
+you will get user table in your DB now.
+-------------------------------------------------
+Note once your signed up the is no defualt mail server so
+check if useFileTransport is true?? in the common/config/main-local.php
+open 
+frontend/runtime/mail
+under it you find the content of the verifcation email
+remove every 3d from the link
+and it will work
+
+you get: http://videotube.test/index.php?r=3Dsite%2Fver=
+ify-email&amp;token=3DX2DvNpUjTcBgYXgd37olKj449lZneDjj_1599996256
+
+change to be http://videotube.test/index.php?r=site%2Fverify-email&token=X2DvNpUjTcBgYXgd37olKj449lZneDjj_1599996256
+
+Try To login after activation
+
+---------------------------------------------
+get pretty url
+
+in frontend/config/main.php
+un comment urlManager compnent
+
+that is in the front end 
+do the same for the backend
+backend/config/main.php
+	
